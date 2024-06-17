@@ -24,7 +24,11 @@ public:
     
     void draw();
     
-    bool isCellOutside (int inRow, int inColumn);
+    bool isCellOutside (int row, int column);
+    
+    bool isCellEmpty (int row, int column);
+    
+    std::array<std::array<int, 10>, 20>& getGrid();
     
 private:
     

@@ -19,8 +19,6 @@ void Grid::prepare()
             grid[row][column] = 0;
         }
     }
-    
-    //print();
 }
 
 void Grid::print()
@@ -59,4 +57,17 @@ bool Grid::isCellOutside (int row, int column)
         return false;
     
     return true;
+}
+
+bool Grid::isCellEmpty (int row, int column)
+{
+    if (grid[row][column] == 0)
+        return true;
+    
+    return false;
+}
+
+std::array<std::array<int, 10>, 20>& Grid::getGrid()
+{
+    return grid;
 }

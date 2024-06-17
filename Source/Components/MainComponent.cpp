@@ -1,5 +1,4 @@
 #include "MainComponent.h"
-#include <random>
 
 MainComponent::MainComponent()
 {
@@ -40,6 +39,10 @@ void MainComponent::process()
 void MainComponent::draw()
 {
     drawBackground();
+    
+    if (eventTriggered(0.2))
+        moveBlockDown();
+    
     currentBlock.draw();
 }
 
@@ -77,7 +80,7 @@ void MainComponent::moveBlockLeft()
 {
     currentBlock.move (0, -1);
     
-    if (isBlockOutside())
+    if (isBlockOutside() || !blockFits())
         currentBlock.move (0, 1);
 }
 
@@ -85,7 +88,7 @@ void MainComponent::moveBlockRight()
 {
     currentBlock.move (0, 1);
     
-    if (isBlockOutside())
+    if (isBlockOutside() || !blockFits())
         currentBlock.move (0, -1);
 }
 
@@ -93,16 +96,43 @@ void MainComponent::moveBlockDown()
 {
     currentBlock.move (1, 0);
     
-    if (isBlockOutside())
+    if (isBlockOutside() || !blockFits())
+    {
         currentBlock.move (-1, 0);
+        lockBlock();
+    }
 }
 
 void MainComponent::rotateBlock()
 {
     currentBlock.rotate();
     
-    if (isBlockOutside())
+    if (isBlockOutside() || !blockFits())
         currentBlock.undoRotation();
+}
+
+void MainComponent::lockBlock()
+{
+    std::vector<Position> tiles = currentBlock.getCellPositions();
+    
+    for (Position item : tiles)
+        grid.getGrid()[item.getRow()][item.getColumn()] = currentBlock.getId();
+    
+    currentBlock = nextBlock;
+    nextBlock = getRandomBlock();
+}
+
+bool MainComponent::blockFits()
+{
+    std::vector<Position> tiles = currentBlock.getCellPositions();
+    
+    for (Position item : tiles)
+    {
+        if (!grid.isCellEmpty(item.getRow(), item.getColumn()))
+            return false;
+    }
+    
+    return true;
 }
 
 Block MainComponent::getRandomBlock()
@@ -110,7 +140,13 @@ Block MainComponent::getRandomBlock()
     if (blocks.empty())
         blocks = getAllBlocks();
     
-    int randomIndex = rand() % blocks.size();
+    std::random_device os_seed;
+    const uint_least32_t seed = os_seed();
+    
+    std::mt19937 generator (seed);
+    std::uniform_int_distribution< uint_least32_t > distribute (0, (int) (blocks.size() - 1));
+    
+    int randomIndex = distribute (generator);
     Block block = blocks[randomIndex];
     blocks.erase (blocks.begin() + randomIndex);
     

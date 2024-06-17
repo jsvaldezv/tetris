@@ -1,9 +1,11 @@
 #pragma once
 #include "../Helpers/Colours.h"
 #include "../Helpers/Sizes.h"
+#include "../Helpers/Time.h"
 #include "Grid/Grid.h"
 #include "Block/Blocks.h"
 #include <raylib.h>
+#include <random>
 
 class MainComponent
 {
@@ -26,8 +28,6 @@ public:
     void moveBlockRight();
     void moveBlockDown();
     
-    void rotateBlock();
-    
     Block getRandomBlock();
     
     std::vector<Block> getAllBlocks();
@@ -35,6 +35,9 @@ public:
 private:
     
     bool isBlockOutside();
+    void rotateBlock();
+    void lockBlock();
+    bool blockFits();
     
     Grid grid;
         
