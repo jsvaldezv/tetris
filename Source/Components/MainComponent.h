@@ -28,9 +28,13 @@ public:
     void moveBlockRight();
     void moveBlockDown();
     
+    void reset();
+    
     Block getRandomBlock();
     
     std::vector<Block> getAllBlocks();
+    
+    bool gameOver { false };
 
 private:
     

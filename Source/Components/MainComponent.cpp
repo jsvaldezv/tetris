@@ -56,6 +56,12 @@ void MainComponent::handleInput()
 {
     int keyPressed = GetKeyPressed();
     
+    if (gameOver && keyPressed != 0)
+    {
+        gameOver = false;
+        reset();
+    }
+    
     switch (keyPressed)
     {
         case KEY_LEFT:
@@ -78,37 +84,57 @@ void MainComponent::handleInput()
 
 void MainComponent::moveBlockLeft()
 {
-    currentBlock.move (0, -1);
-    
-    if (isBlockOutside() || !blockFits())
-        currentBlock.move (0, 1);
+    if (!gameOver)
+    {
+        currentBlock.move (0, -1);
+        
+        if (isBlockOutside() || !blockFits())
+            currentBlock.move (0, 1);
+    }
 }
 
 void MainComponent::moveBlockRight()
 {
-    currentBlock.move (0, 1);
-    
-    if (isBlockOutside() || !blockFits())
-        currentBlock.move (0, -1);
+    if (!gameOver)
+    {
+        currentBlock.move (0, 1);
+        
+        if (isBlockOutside() || !blockFits())
+            currentBlock.move (0, -1);
+    }
 }
 
 void MainComponent::moveBlockDown()
 {
-    currentBlock.move (1, 0);
-    
-    if (isBlockOutside() || !blockFits())
+    if (!gameOver)
     {
-        currentBlock.move (-1, 0);
-        lockBlock();
+        currentBlock.move (1, 0);
+        
+        if (isBlockOutside() || !blockFits())
+        {
+            currentBlock.move (-1, 0);
+            lockBlock();
+        }
     }
+}
+
+void MainComponent::reset()
+{
+    grid.prepare();
+    blocks = getAllBlocks();
+    currentBlock = getRandomBlock();
+    nextBlock = getRandomBlock();
 }
 
 void MainComponent::rotateBlock()
 {
-    currentBlock.rotate();
-    
-    if (isBlockOutside() || !blockFits())
-        currentBlock.undoRotation();
+    if (!gameOver)
+    {
+        currentBlock.rotate();
+        
+        if (isBlockOutside() || !blockFits())
+            currentBlock.undoRotation();
+    }
 }
 
 void MainComponent::lockBlock()
@@ -119,6 +145,10 @@ void MainComponent::lockBlock()
         grid.getGrid()[item.getRow()][item.getColumn()] = currentBlock.getId();
     
     currentBlock = nextBlock;
+    
+    if (!blockFits())
+        gameOver = true;
+    
     nextBlock = getRandomBlock();
     grid.clearFullRows();
 }
