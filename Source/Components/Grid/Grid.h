@@ -24,8 +24,6 @@ private:
     
     int cellSize { 30 };
     
-    std::vector<Color> getCellColours();
-    
     std::array<std::array<int, 10>, 20> grid;
     
     std::vector<Color> colours;
