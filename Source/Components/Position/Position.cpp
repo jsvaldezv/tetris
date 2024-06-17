@@ -2,11 +2,16 @@
 
 Position::Position (int inRow, int inColumn)
 {
-    row = inRow;
-    column = inColumn;
+    properties.row = inRow;
+    properties.column = inColumn;
 }
 
-Position::~Position()
+int Position::getRow()
 {
-    
+    return properties.row;
+}
+
+int Position::getColumn()
+{
+    return properties.column;
 }

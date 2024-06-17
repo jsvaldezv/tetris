@@ -12,9 +12,9 @@ Grid::~Grid()
 
 void Grid::prepare()
 {
-    for (int row = 0; row < numRows; row++)
+    for (int row = 0; row < properties.numRows; row++)
     {
-        for (int column = 0; column < numCols; column++)
+        for (int column = 0; column < properties.numCols; column++)
         {
             grid[row][column] = 0;
         }
@@ -25,9 +25,9 @@ void Grid::prepare()
 
 void Grid::print()
 {
-    for (int row = 0; row < numRows; row++)
+    for (int row = 0; row < properties.numRows; row++)
     {
-        for (int column = 0; column < numCols; column++)
+        for (int column = 0; column < properties.numCols; column++)
         {
             std::cout << grid[row][column] << " ";
         }
@@ -38,12 +38,25 @@ void Grid::print()
 
 void Grid::draw()
 {
-    for (int row = 0; row < numRows; row++)
+    for (int row = 0; row < properties.numRows; row++)
     {
-        for (int column = 0; column < numCols; column++)
+        for (int column = 0; column < properties.numCols; column++)
         {
             int cellValue = grid[row][column];
-            DrawRectangle (column * cellSize+1, row * cellSize + 1, cellSize-1, cellSize - 1, colours[cellValue]);
+            
+            DrawRectangle (column * properties.cellSize + 1,
+                           row * properties.cellSize + 1,
+                           properties.cellSize - 1,
+                           properties.cellSize - 1,
+                           colours[cellValue]);
         }
     }
+}
+
+bool Grid::isCellOutside (int row, int column)
+{
+    if (row >= 0 && row < properties.numRows && column >= 0 && column < properties.numCols)
+        return false;
+    
+    return true;
 }

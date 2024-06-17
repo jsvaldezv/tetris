@@ -19,11 +19,26 @@ public:
     void draw();
 
     void drawBackground();
+    
+    void handleInput();
+    
+    void moveBlockLeft();
+    void moveBlockRight();
+    void moveBlockDown();
+    
+    Block getRandomBlock();
+    
+    std::vector<Block> getAllBlocks();
 
 private:
     
-    Grid grid;
+    bool isBlockOutside();
     
-    LBlock block;
+    Grid grid;
+        
+    std::vector<Block> blocks;
+    
+    Block currentBlock;
+    Block nextBlock;
     
 };

@@ -11,18 +11,24 @@ public:
     explicit Grid();
     ~Grid();
     
+    struct Properties
+    {
+        int numRows { 20 };
+        int numCols { 10 };
+        int cellSize { 30 };
+    };
+    
     void prepare();
     
     void print();
     
     void draw();
     
+    bool isCellOutside (int inRow, int inColumn);
+    
 private:
     
-    int numRows { 20 };
-    int numCols { 10 };
-    
-    int cellSize { 30 };
+    Properties properties;
     
     std::array<std::array<int, 10>, 20> grid;
     
