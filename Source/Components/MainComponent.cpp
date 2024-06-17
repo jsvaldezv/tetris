@@ -2,7 +2,7 @@
 
 MainComponent::MainComponent()
 {
-    InitWindow (WIDTH, HEIGHT, "Tetris Game!");
+    InitWindow (Sizes::WIDTH, Sizes::HEIGHT, "Tetris Game!");
     SetTargetFPS (60);
 
     prepare();
@@ -16,7 +16,6 @@ MainComponent::~MainComponent()
 
 void MainComponent::prepare()
 {
-
 }
 
 void MainComponent::process()
@@ -38,5 +37,5 @@ void MainComponent::draw()
 
 void MainComponent::drawBackground()
 {
-    ClearBackground (Colours::DarkGreen);
+    ClearBackground (Colours::DarkBlue);
 }

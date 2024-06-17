@@ -1,4 +1,7 @@
 #pragma once
 
-static constexpr int WIDTH = 1280;
-static constexpr int HEIGHT = 800;
+namespace Sizes
+{
+    static constexpr int WIDTH = 300;
+    static constexpr int HEIGHT = 600;
+}

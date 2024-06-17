@@ -1,6 +1,6 @@
 #pragma once
-#include "../Helpers/Sizes.h"
 #include "../Helpers/Colours.h"
+#include "../Helpers/Sizes.h"
 #include <raylib.h>
 
 class MainComponent
@@ -18,7 +18,4 @@ public:
     void drawBackground();
 
 private:
-
-
-
 };
