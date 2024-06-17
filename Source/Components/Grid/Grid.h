@@ -28,11 +28,19 @@ public:
     
     bool isCellEmpty (int row, int column);
     
+    int clearFullRows();
+    
     std::array<std::array<int, 10>, 20>& getGrid();
     
 private:
     
     Properties properties;
+    
+    bool isRowFull (int row);
+    
+    void clearRow (int row);
+    
+    void moveRowDown (int row, int numRows);
     
     std::array<std::array<int, 10>, 20> grid;
     

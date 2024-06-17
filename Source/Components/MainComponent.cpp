@@ -120,6 +120,7 @@ void MainComponent::lockBlock()
     
     currentBlock = nextBlock;
     nextBlock = getRandomBlock();
+    grid.clearFullRows();
 }
 
 bool MainComponent::blockFits()
