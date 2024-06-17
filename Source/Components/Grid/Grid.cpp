@@ -7,7 +7,7 @@ Grid::Grid()
 
 Grid::~Grid()
 {
-    
+    colours.clear();
 }
 
 void Grid::prepare()
@@ -20,11 +20,7 @@ void Grid::prepare()
         }
     }
     
-    grid[0][0] = 1;
-    grid[3][5] = 4;
-    grid[17][8] = 7;
-    
-    print();
+    //print();
 }
 
 void Grid::print()

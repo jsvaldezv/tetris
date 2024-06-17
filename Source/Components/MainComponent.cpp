@@ -35,6 +35,8 @@ void MainComponent::draw()
 {
     drawBackground();
     grid.draw();
+    
+    block.draw();
 }
 
 void MainComponent::drawBackground()

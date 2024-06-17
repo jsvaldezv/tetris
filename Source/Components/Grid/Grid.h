@@ -8,7 +8,7 @@ class Grid
 {
 public:
     
-    Grid();
+    explicit Grid();
     ~Grid();
     
     void prepare();
@@ -17,16 +17,16 @@ public:
     
     void draw();
     
-    std::array<std::array<int, 10>, 20> grid;
-    
 private:
-    
-    std::vector<Color> getCellColours();
     
     int numRows { 20 };
     int numCols { 10 };
     
     int cellSize { 30 };
+    
+    std::vector<Color> getCellColours();
+    
+    std::array<std::array<int, 10>, 20> grid;
     
     std::vector<Color> colours;
 
