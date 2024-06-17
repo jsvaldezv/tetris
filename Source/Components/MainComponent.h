@@ -1,6 +1,7 @@
 #pragma once
 #include "../Helpers/Colours.h"
 #include "../Helpers/Sizes.h"
+#include "Grid/Grid.h"
 #include <raylib.h>
 
 class MainComponent
@@ -18,4 +19,7 @@ public:
     void drawBackground();
 
 private:
+    
+    Grid grid;
+    
 };

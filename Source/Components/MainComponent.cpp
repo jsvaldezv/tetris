@@ -16,6 +16,7 @@ MainComponent::~MainComponent()
 
 void MainComponent::prepare()
 {
+    grid.prepare();
 }
 
 void MainComponent::process()
@@ -33,6 +34,7 @@ void MainComponent::process()
 void MainComponent::draw()
 {
     drawBackground();
+    grid.draw();
 }
 
 void MainComponent::drawBackground()
