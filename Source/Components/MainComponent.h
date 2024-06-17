@@ -1,11 +1,11 @@
 #pragma once
+#include <raylib.h>
+#include <random>
 #include "../Helpers/Colours.h"
 #include "../Helpers/Sizes.h"
 #include "../Helpers/Time.h"
 #include "Grid/Grid.h"
 #include "Block/Blocks.h"
-#include <raylib.h>
-#include <random>
 
 class MainComponent
 {

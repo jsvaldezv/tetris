@@ -36,12 +36,12 @@ void Block::undoRotation()
     properties.rotationState--;
     
     if (properties.rotationState == -1)
-        properties.rotationState = cells.size() - 1;
+        properties.rotationState = (int) (cells.size() - 1);
 }
 
 std::vector<Position> Block::getCellPositions()
 {
-    std::vector<Position> tiles = cells[properties.rotationState];
+    auto tiles = cells[properties.rotationState];
     std::vector<Position> movedTiles;
     
     for (Position item : tiles)

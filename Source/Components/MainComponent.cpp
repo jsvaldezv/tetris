@@ -113,7 +113,7 @@ void MainComponent::rotateBlock()
 
 void MainComponent::lockBlock()
 {
-    std::vector<Position> tiles = currentBlock.getCellPositions();
+    auto tiles = currentBlock.getCellPositions();
     
     for (Position item : tiles)
         grid.getGrid()[item.getRow()][item.getColumn()] = currentBlock.getId();
@@ -124,7 +124,7 @@ void MainComponent::lockBlock()
 
 bool MainComponent::blockFits()
 {
-    std::vector<Position> tiles = currentBlock.getCellPositions();
+    auto tiles = currentBlock.getCellPositions();
     
     for (Position item : tiles)
     {
@@ -160,7 +160,7 @@ std::vector<Block> MainComponent::getAllBlocks()
 
 bool MainComponent::isBlockOutside()
 {
-    std::vector<Position> tiles = currentBlock.getCellPositions();
+    auto tiles = currentBlock.getCellPositions();
     
     for (Position item : tiles)
     {

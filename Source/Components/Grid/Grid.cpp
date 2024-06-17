@@ -15,9 +15,7 @@ void Grid::prepare()
     for (int row = 0; row < properties.numRows; row++)
     {
         for (int column = 0; column < properties.numCols; column++)
-        {
             grid[row][column] = 0;
-        }
     }
 }
 
@@ -26,9 +24,7 @@ void Grid::print()
     for (int row = 0; row < properties.numRows; row++)
     {
         for (int column = 0; column < properties.numCols; column++)
-        {
             std::cout << grid[row][column] << " ";
-        }
         
         std::cout << "\n";
     }
