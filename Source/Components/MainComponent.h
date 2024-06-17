@@ -26,6 +26,8 @@ public:
     void moveBlockRight();
     void moveBlockDown();
     
+    void rotateBlock();
+    
     Block getRandomBlock();
     
     std::vector<Block> getAllBlocks();

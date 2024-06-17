@@ -66,6 +66,10 @@ void MainComponent::handleInput()
         case KEY_DOWN:
             moveBlockDown();
             break;
+            
+        case KEY_UP:
+            rotateBlock();
+            break;
     }
 }
 
@@ -91,6 +95,14 @@ void MainComponent::moveBlockDown()
     
     if (isBlockOutside())
         currentBlock.move (-1, 0);
+}
+
+void MainComponent::rotateBlock()
+{
+    currentBlock.rotate();
+    
+    if (isBlockOutside())
+        currentBlock.undoRotation();
 }
 
 Block MainComponent::getRandomBlock()

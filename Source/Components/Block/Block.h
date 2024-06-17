@@ -25,6 +25,10 @@ public:
     
     void move (int rows, int columns);
     
+    void rotate();
+    
+    void undoRotation();
+    
     std::vector<Position> getCellPositions();
     
     int getId();
