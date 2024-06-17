@@ -1,6 +1,6 @@
-# C++ Project Template
+# Tetris
 
-C++ Project Template with CMake
+Tetris game with C++ and Raylib
 
 ## Pre-requisites
 
