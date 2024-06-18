@@ -38,8 +38,8 @@ void Grid::draw()
         {
             int cellValue = grid[row][column];
             
-            DrawRectangle (column * properties.cellSize + 1,
-                           row * properties.cellSize + 1,
+            DrawRectangle (column * properties.cellSize + 11,
+                           row * properties.cellSize + 11,
                            properties.cellSize - 1,
                            properties.cellSize - 1,
                            colours[cellValue]);

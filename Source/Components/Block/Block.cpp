@@ -10,8 +10,8 @@ void Block::draw()
     std::vector<Position> tiles = getCellPositions();
     
     for (Position item : tiles)
-        DrawRectangle (item.getColumn() * properties.cellSize + 1,
-                       item.getRow() * properties.cellSize + 1,
+        DrawRectangle (item.getColumn() * properties.cellSize + 11,
+                       item.getRow() * properties.cellSize + 11,
                        properties.cellSize - 1,
                        properties.cellSize - 1,
                        colours[getId()]);

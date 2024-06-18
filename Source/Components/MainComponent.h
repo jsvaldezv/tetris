@@ -50,4 +50,6 @@ private:
     Block currentBlock;
     Block nextBlock;
     
+    Font font;
+    
 };

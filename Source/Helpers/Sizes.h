@@ -2,6 +2,6 @@
 
 namespace Sizes
 {
-    static constexpr int WIDTH = 300;
-    static constexpr int HEIGHT = 600;
+    static constexpr int WIDTH = 500;
+    static constexpr int HEIGHT = 620;
 }

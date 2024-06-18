@@ -13,6 +13,7 @@ namespace Colours
     static constexpr Color Purple = { 166, 0, 247, 255 };
     static constexpr Color Cyan = { 21, 204, 209, 255 };
     static constexpr Color Blue = { 13, 64, 216, 255 };
+    static constexpr Color LightBlue = { 59, 85, 162, 255 };
 
     static std::vector<Color> getCellColours()
     {
