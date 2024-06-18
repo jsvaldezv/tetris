@@ -61,6 +61,12 @@ void MainComponent::drawBackground()
     
     if (gameOver)
         DrawTextEx (font, "GAME OVER", { 320, 450 }, 38, 2, WHITE);
+        
+    auto scoreText = std::to_string (score);
+    Vector2 textSize = MeasureTextEx (font, scoreText.c_str(), 38, 2);
+    
+    float scoreX = 320 + (170 - textSize.x) / 2;
+    DrawTextEx (font, scoreText.c_str(), { scoreX, 65 }, 38, 2, WHITE);
 }
 
 void MainComponent::handleInput()
@@ -85,6 +91,7 @@ void MainComponent::handleInput()
             
         case KEY_DOWN:
             moveBlockDown();
+            updateScore (0, 1);
             break;
             
         case KEY_UP:
@@ -135,6 +142,7 @@ void MainComponent::reset()
     blocks = getAllBlocks();
     currentBlock = getRandomBlock();
     nextBlock = getRandomBlock();
+    score = 0;
 }
 
 void MainComponent::rotateBlock()
@@ -161,7 +169,8 @@ void MainComponent::lockBlock()
         gameOver = true;
     
     nextBlock = getRandomBlock();
-    grid.clearFullRows();
+    int rowsCleared = grid.clearFullRows();
+    updateScore (rowsCleared, 0);
 }
 
 bool MainComponent::blockFits()
@@ -175,6 +184,29 @@ bool MainComponent::blockFits()
     }
     
     return true;
+}
+
+void MainComponent::updateScore (int linesCleared, int moveDownPoints)
+{
+    switch (linesCleared)
+    {
+        case 1:
+            score += 100;
+            break;
+            
+        case 2:
+            score += 300;
+            break;
+            
+        case 3:
+            score += 500;
+            break;
+            
+        default:
+            break;
+    }
+    
+    score += moveDownPoints;
 }
 
 Block MainComponent::getRandomBlock()

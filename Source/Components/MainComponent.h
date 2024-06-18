@@ -1,6 +1,7 @@
 #pragma once
 #include <raylib.h>
 #include <random>
+#include <iostream>
 #include "../Helpers/Colours.h"
 #include "../Helpers/Sizes.h"
 #include "../Helpers/Time.h"
@@ -43,6 +44,8 @@ private:
     void lockBlock();
     bool blockFits();
     
+    void updateScore (int linesCleared, int moveDownPoints);
+    
     Grid grid;
         
     std::vector<Block> blocks;
@@ -51,5 +54,7 @@ private:
     Block nextBlock;
     
     Font font;
+    
+    int score { 0 };
     
 };
