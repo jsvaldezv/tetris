@@ -21,7 +21,7 @@ public:
         int columnOffset { 0 };
     };
     
-    void draw();
+    void draw (int offsetX, int offsetY);
     
     void move (int rows, int columns);
     

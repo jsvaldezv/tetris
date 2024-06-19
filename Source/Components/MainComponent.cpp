@@ -42,10 +42,25 @@ void MainComponent::draw()
 {
     drawBackground();
     
-    if (eventTriggered(0.2))
+    if (eventTriggered (0.2))
         moveBlockDown();
     
-    currentBlock.draw();
+    currentBlock.draw (11, 11);
+    
+    switch (nextBlock.getId())
+    {
+        case 3:
+            nextBlock.draw (255, 290);
+            break;
+            
+        case 4:
+            nextBlock.draw (255, 280);
+            break;
+            
+        default:
+            nextBlock.draw (270, 270);
+            break;
+    }
 }
 
 void MainComponent::drawBackground()
