@@ -25,19 +25,21 @@ public:
     
     void handleInput();
     
-    void moveBlockLeft();
-    void moveBlockRight();
     void moveBlockDown();
     
     void reset();
     
-    Block getRandomBlock();
-    
-    std::vector<Block> getAllBlocks();
-    
     bool gameOver { false };
+    
+    Music music;
 
 private:
+    
+    Block getRandomBlock();
+    std::vector<Block> getAllBlocks();
+    
+    void moveBlockLeft();
+    void moveBlockRight();
     
     bool isBlockOutside();
     void rotateBlock();
@@ -56,5 +58,8 @@ private:
     Font font;
     
     int score { 0 };
+    
+    Sound rotateSound;
+    Sound clearSound;
     
 };

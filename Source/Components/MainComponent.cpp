@@ -5,6 +5,8 @@ MainComponent::MainComponent()
     InitWindow (Sizes::WIDTH, Sizes::HEIGHT, "Tetris Game!");
     SetTargetFPS (60);
 
+    InitAudioDevice();
+    
     prepare();
     process();
 }
@@ -12,6 +14,11 @@ MainComponent::MainComponent()
 MainComponent::~MainComponent()
 {
     CloseWindow();
+    
+    UnloadMusicStream (music);
+    UnloadSound (rotateSound);
+    UnloadSound (clearSound);
+    CloseAudioDevice();
 }
 
 void MainComponent::prepare()
@@ -23,12 +30,20 @@ void MainComponent::prepare()
     nextBlock = getRandomBlock();
     
     font = LoadFontEx("../../Font/monogram.ttf", 64, 0, 0);
+    
+    music = LoadMusicStream ("../../Sounds/music.mp3");
+    PlayMusicStream (music);
+    
+    rotateSound = LoadSound ("../../Sounds/rotate.mp3");
+    clearSound = LoadSound ("../../Sounds/clear.mp3");
 }
 
 void MainComponent::process()
 {
     while (!WindowShouldClose())
     {
+        UpdateMusicStream (music);
+        
         BeginDrawing();
 
         handleInput();
@@ -168,6 +183,8 @@ void MainComponent::rotateBlock()
         
         if (isBlockOutside() || !blockFits())
             currentBlock.undoRotation();
+        else
+            PlaySound (rotateSound);
     }
 }
 
@@ -185,7 +202,12 @@ void MainComponent::lockBlock()
     
     nextBlock = getRandomBlock();
     int rowsCleared = grid.clearFullRows();
-    updateScore (rowsCleared, 0);
+    
+    if (rowsCleared > 0)
+    {
+        PlaySound (clearSound);
+        updateScore (rowsCleared, 0);
+    }
 }
 
 bool MainComponent::blockFits()
