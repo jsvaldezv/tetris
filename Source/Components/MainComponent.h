@@ -1,17 +1,16 @@
 #pragma once
-#include <raylib.h>
-#include <random>
-#include <iostream>
 #include "../Helpers/Colours.h"
 #include "../Helpers/Sizes.h"
 #include "../Helpers/Time.h"
-#include "Grid/Grid.h"
 #include "Block/Blocks.h"
+#include "Grid/Grid.h"
+#include <iostream>
+#include <random>
+#include <raylib.h>
 
 class MainComponent
 {
 public:
-    
     explicit MainComponent();
     ~MainComponent();
 
@@ -22,44 +21,42 @@ public:
     void draw();
 
     void drawBackground();
-    
+
     void handleInput();
-    
+
     void moveBlockDown();
-    
+
     void reset();
-    
+
     bool gameOver { false };
-    
+
     Music music;
 
 private:
     
+    Grid grid;
+    
     Block getRandomBlock();
+    std::vector<Block> blocks;
     std::vector<Block> getAllBlocks();
     
+    Block currentBlock;
+    Block nextBlock;
+
     void moveBlockLeft();
     void moveBlockRight();
-    
+
     bool isBlockOutside();
     void rotateBlock();
     void lockBlock();
     bool blockFits();
-    
+
     void updateScore (int linesCleared, int moveDownPoints);
-    
-    Grid grid;
-        
-    std::vector<Block> blocks;
-    
-    Block currentBlock;
-    Block nextBlock;
-    
+
     Font font;
-    
+
     int score { 0 };
-    
+
     Sound rotateSound;
     Sound clearSound;
-    
 };
