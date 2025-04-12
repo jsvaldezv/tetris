@@ -1,8 +1,18 @@
 # Tetris
 
-Tetris game with C++ and Raylib
-
 https://github.com/user-attachments/assets/66d78994-20d0-4c67-9a72-868b454460f6
+
+This project is a custom implementation of the iconic Tetris puzzle game, developed in C++ with raylib for graphics and input handling. The project uses CMake for an organized and portable build system.
+
+Features include:
+
+- Classic Tetris mechanics: tetromino generation, rotation, collision detection, line clearing
+- Grid-based logic with clean object-oriented structure in C++
+- Real-time input response and rendering via raylib
+- Score tracking and increasing difficulty
+- Cross-platform compatibility using CMake
+
+This project is a solid entry point for understanding game loops, 2D grid logic, and real-time rendering using a lightweight and modern C++ framework.
 
 ## Pre-requisites
 
