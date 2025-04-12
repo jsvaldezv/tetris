@@ -1,4 +1,4 @@
-# Tetris
+# Tetris Clone
 
 https://github.com/user-attachments/assets/66d78994-20d0-4c67-9a72-868b454460f6
 
